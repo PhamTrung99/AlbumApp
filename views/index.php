@@ -1,3 +1,5 @@
+<?php require '../controllers/indexController.php'; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,38 +13,61 @@
 
 <body>
     <div class="container" style="margin: 10px">
-        <div class="row" style="height: 6rem;align-items: center;">
-            Banner
+        <div class="row" style="">
+            <img src="../assets/image/banner.jpg" height="400px" width="1200px" />
         </div>
-        <div class="row">
+        <div class="row" style="padding-top: 10px">
             <div class="col-md-6"></div>
-            <div class="col-md-2" style="text-align: end;"><a class="btn btn-primary" href="#" role="button">Tìm kiếm
-                </a></div>
-            <div class="col-md-2" style="text-align: end;"><a class="btn btn-primary" href="#" role="button">Thêm bài
-                    hát mới</a></div>
-            <div class="col-md-2" style="text-align: end;"> <a class="btn btn-primary" href="#" role="button">Thêm
-                    Album</a></div>
+            <div class="col-md-6" style="text-align: end;"><a class="btn btn-dark" href="#" role="button">Tìm kiếm
+                </a>
+                <a class="btn btn-dark" href="#" role="button">Thêm bài
+                    hát mới</a>
+                <a class="btn btn-dark" href="#" role="button">Thêm
+                    Album</a>
+            </div>
         </div>
         <div class="row" style="padding-top: 10px">
             <div class="col-md-2">
                 <div class="row">
                     <ul class="list-group" style="width: 300px;">
-                        <li class="list-group-item active">Các thể loại</li>
-                        <li class="list-group-item">Thể loại 1</li>
-                        <li class="list-group-item">Thể loại 2</li>
-                        <li class="list-group-item">Thể loại 3</li>
+                        <li class="list-group-item active">CÁC THỂ LOẠI</li>
+                        <?php forEach ($genresList as $genre) { ?>
+                        <li class="list-group-item"><?php echo ($genre->GenreName) ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="row">
                     <ul class="list-group" style="width: 300px; padding-top: 16px;">
-                        <li class="list-group-item active">Các ca sĩ/ Nhóm nhạc</li>
-                        <li class="list-group-item">Ca sĩ 1</li>
-                        <li class="list-group-item">Ca sĩ 2</li>
-                        <li class="list-group-item">Ca sĩ 3</li>
+                        <li class="list-group-item active">CÁC CA SĨ/NHÓM NHẠC</li>
+                        <?php forEach ($artistList as $artist) { ?>
+                        <li class="list-group-item"><?php echo ($artist->Name) ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-8">Hello</div>
+            <div class="col-md-7" style="margin-left: 20px;margin-right: 20px;">
+                <div class="row">TÌM KIẾM</div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Từ khoá
+                    </div>
+                    <div class="col-md-4">
+                        <input type="input" id="searchText" />
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" onclick="" class="btn btn-dark">Tìm</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <label for="vehicle1">Ca sĩ</label><br>
+                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                    <label for="vehicle2">Album</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3</label><br><br>
+                </div>
+            </div>
             <div class="col-md-2">
                 <div class="row" style="flex-direction: row-reverse;">
                     <ul class="list-group" style="width: 300px;">
@@ -57,15 +82,15 @@
                             <label for="passWord">Mât Khẩu</label>
                             <input type="password" class="form-control" id="passWord">
                         </div>
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <button type="submit" class="btn btn-dark">Đăng nhập</button>
                     </form>
                 </div>
                 <div class="row" style="flex-direction: row-reverse;">
                     <ul class="list-group" style="width: 300px; padding-top: 16px;">
-                        <li class="list-group-item active">Các ca sĩ/ Nhóm nhạc</li>
-                        <li class="list-group-item">Ca sĩ 1</li>
-                        <li class="list-group-item">Ca sĩ 2</li>
-                        <li class="list-group-item">Ca sĩ 3</li>
+                        <li class="list-group-item active">ALBUM MỚI</li>
+                        <?php forEach ($albumList as $album) { ?>
+                        <li class="list-group-item"><?php echo ($album->Title) ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
