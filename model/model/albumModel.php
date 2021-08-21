@@ -17,5 +17,18 @@ class Album{
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getAlbumNameByContent($searchText) {
+        $text = "%$searchText%";
+        $statement = $this->pdo->prepare(
+        'SELECT album.Title,DATE(album.ReleaseDate) AS ReleaseDate, count(album_details.SongID) AS songCount
+        FROM albumdb.album
+        LEFT JOIN albumdb.album_details ON album_details.AlbumID = album.AlbumID 
+        WHERE album.Title LIKE :searchText
+        GROUP BY album.Title,album.ReleaseDate');
+        $statement->bindParam(':searchText',$text, PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }
 ?>

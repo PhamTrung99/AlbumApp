@@ -19,5 +19,15 @@ class Artist{
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getArtistByName($searchText) {
+        $text = "%$searchText%";
+        $statement = $this->pdo->prepare(
+            'SELECT artist.Name, artist.ImagePath
+            FROM albumdb.artist
+            WHERE artist.Name LIKE :searchText');
+        $statement->bindParam(':searchText',$text, PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 ?>
