@@ -59,13 +59,13 @@
                     </div>
                     <div class="col-md-5"></div>
                 </div>
-                <div class="row">
+                <div class="row" >
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <label for="vehicle1">Ca sĩ</label><br>
                     <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
                     <label for="vehicle2">Album</label><br>
                     <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                    <label for="vehicle3</label><br><br>
+                    <label for="vehicle3">Bài hát</label><br><br>
                 </div>
             </div>
             <div class="col-md-2">
