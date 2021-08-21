@@ -1,6 +1,6 @@
 <?php require '../controllers/searchController.php'?>
 
-<div class="row">TÌM KIẾM</div>
+<div class="row" style="font-weight: bolder;font-size: larger;">TÌM KIẾM</div>
 <div class="row">
     <div class="col-md-2">
         Từ khoá
@@ -26,21 +26,23 @@
     <label for="cbsong">Bài hát</label><br><br>
 </div>
 <hr class="solid">
-<div class="row">Kết quả</div>
+<div class="row" style="font-weight: bolder;font-size: larger;">Kết quả</div>
 <?php if($songlsResult) {?>
-<div class="row" style="padding: 15px 0px 5px 25px;">>> BÀI HÁT</div>
+<div class="row" style="padding: 15px 0px 5px 25px;font-weight: bolder;">>> BÀI HÁT</div>
 <div class="row">
     <ul class="list-group" style="width: 664px;">
         <?php forEach ($songlsResult as $song) { ?>
         <li class="list-group-item">
-            <?php echo($song->Title)?> - <?php echo($song->Name)?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill"
-                viewBox="0 0 16 16">
-                <path
-                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
-            </svg>
-            <div class="row" style="flex-direction: row-reverse;color: red"><?php echo($song->GenreName) ?></div>
+            <div class="row">
+                <div class="col-md-9"><?php echo($song->Title)?> - <?php echo($song->Name)?></div>
+                <div class="col-md-1" id="btPlayAudio">
+                    <button class="btn btn-outline-dark" onclick="playAudio()"><i class="fa fa-play"></i></button>
+                </div>
+                <audio id="myAudio">
+                    <source src="../assets/audio/Dom dom_jack.mp3" type="audio/mpeg">
+                </audio>
+                <div class="col-md-2" style="text-align: end;color: red"><?php echo($song->GenreName) ?></div>
+            </div>
         </li>
         <?php } ?>
     </ul>
@@ -48,15 +50,17 @@
 <?php } ?>
 
 <?php if($albumlsResult) {?>
-<div class="row" style="padding: 15px 0px 5px 25px;">>>ALBUM </div>
+<div class="row" style="padding: 15px 0px 5px 25px; font-weight: bolder;">>>ALBUM </div>
 <div class="row">
     <ul class="list-group" style="width: 664px;">
         <?php forEach ($albumlsResult as $album) { ?>
-        <li class="list-group-item" >
+        <li class="list-group-item">
             <div class="row">
-                <div class="col-md-8"><?php echo($album->Title)?> - (<?php echo($album->songCount)?>)</div>
-                <div class="col-md-2"><small style="color: red; padding-top:10px"><?php echo($album->ReleaseDate)?></small></div>
-                <div class="col-md-2" style="padding-left: 39px;"><img src='../assets/image/thebeatlesAlbum.jpeg' height="70px" width="70px"></div>
+                <div class="col-md-8"><?php echo($album->Title)?> - (<?php echo($album->songCount)?> bài)</div>
+                <div class="col-md-2"><small
+                        style="color: red; padding-top:10px"><?php echo($album->ReleaseDate)?></small></div>
+                <div class="col-md-2" style="padding-left: 39px;"><img src='../assets/image/thebeatlesAlbum.jpeg'
+                        height="70px" width="70px"></div>
             </div>
         </li>
         <?php } ?>
@@ -65,14 +69,15 @@
 <?php } ?>
 
 <?php if($artistlsResult) {?>
-<div class="row" style="padding: 15px 0px 5px 25px;">>> CA SĨ/ NHÓM NHẠC </div>
+<div class="row" style="padding: 15px 0px 5px 25px; font-weight: bolder;">>> CA SĨ/ NHÓM NHẠC </div>
 <div class="row">
     <ul class="list-group" style="width: 664px;">
         <?php forEach ($artistlsResult as $artist) { ?>
         <li class="list-group-item">
             <div class="row">
                 <div class="col-md-10"><?php echo($artist->Name)?></div>
-                <div class="col-md-2"><img src='../assets/image/adele.jpeg' height="70px" width="70px"></div>
+                <div class="col-md-2" style="padding-left: 39px;"><img src='../assets/image/adele.jpeg' height="70px"
+                        width="70px"></div>
             </div>
         </li>
         <?php } ?>
@@ -95,6 +100,21 @@ function handlebtSearchClick() {
     } else {
         window.alert("Vui lòng điền đủ thông tin !!");
     }
+
+}
+</script>
+<script>
+var x = document.getElementById("myAudio");
+
+function playAudio() {
+    x.play();
+    document.getElementById("btPlayAudio").innerHTML ='<button class="btn btn-outline-dark" onclick="pauseAudio()"><i class="fa fa-pause"></i></button>'
+
+}
+
+function pauseAudio() {
+    x.pause();
+    document.getElementById("btPlayAudio").innerHTML ='<button class="btn btn-outline-dark" onclick="playAudio()"><i class="fa fa-play"></i></button>'
 
 }
 </script>
