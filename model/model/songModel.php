@@ -9,7 +9,7 @@ class Song{
     public function getSongByContent($searchText) {
         $text = "%$searchText%";
         $statement = $this->pdo->prepare(
-            'SELECT title.Title, artist.Name, genre.GenreName
+            'SELECT song.songID, title.Title, artist.Name, genre.GenreName
             FROM albumdb.song, albumdb.title, albumdb.artist, albumdb.genre 
             WHERE song.TitleID = title.TitleID 
             AND song.ArtistID = artist.ArtistID 

@@ -15,7 +15,7 @@
 <body>
     <div class="container" style="margin: 10px">
         <div class="row" style="">
-            <img src="../assets/image/banner.jpg" height="400px" width="1200px" />
+            <img src="../assets/image/banner.jpg" height="400px" width="1125px" />
         </div>
         <div class="row" style="padding-top: 10px">
             <?php include './partials/headerBar.php' ?>
@@ -29,7 +29,7 @@
                     <?php include './partials/artistSideBar.php' ?>
                 </div>
             </div>
-            <div class="col-md-7" style="margin-left: 20px;margin-right: 20px;">
+            <div class="col-md-7" style="margin-left: 40px;margin-right: 40px;">
                 <?php include './partials/searchArea.php' ?>
             </div>
             <div class="col-md-2">

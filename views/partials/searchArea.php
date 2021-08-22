@@ -35,10 +35,10 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col-md-9"><?php echo($song->Title)?> - <?php echo($song->Name)?></div>
-                <div class="col-md-1" id="btPlayAudio">
-                    <button class="btn btn-outline-dark" onclick="playAudio()"><i class="fa fa-play"></i></button>
+                <div class="col-md-1" id="btPlayAudio<?php echo($song->songID)?>">
+                    <button class="btn btn-outline-dark" onclick="playAudio(<?php echo($song->songID)?>)"><i class="fa fa-play"></i></button>
                 </div>
-                <audio id="myAudio">
+                <audio id="myAudio<?php echo($song->songID)?>">
                     <source src="../assets/audio/Dom dom_jack.mp3" type="audio/mpeg">
                 </audio>
                 <div class="col-md-2" style="text-align: end;color: red"><?php echo($song->GenreName) ?></div>
@@ -104,17 +104,18 @@ function handlebtSearchClick() {
 }
 </script>
 <script>
-var x = document.getElementById("myAudio");
 
-function playAudio() {
+function playAudio(songID) {
+    var x = document.getElementById(`myAudio${songID}`);
     x.play();
-    document.getElementById("btPlayAudio").innerHTML ='<button class="btn btn-outline-dark" onclick="pauseAudio()"><i class="fa fa-pause"></i></button>'
+    document.getElementById(`btPlayAudio${songID}`).innerHTML =`<button class="btn btn-outline-dark" onclick="pauseAudio(${songID})"><i class="fa fa-pause"></i></button>`
 
 }
 
-function pauseAudio() {
+function pauseAudio(songID) {
+    var x = document.getElementById(`myAudio${songID}`);
     x.pause();
-    document.getElementById("btPlayAudio").innerHTML ='<button class="btn btn-outline-dark" onclick="playAudio()"><i class="fa fa-play"></i></button>'
+    document.getElementById(`btPlayAudio${songID}`).innerHTML =`<button class="btn btn-outline-dark" onclick="playAudio(${songID})"><i class="fa fa-play"></i></button>`
 
 }
 </script>
