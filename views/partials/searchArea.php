@@ -86,36 +86,6 @@
 <?php } ?>
 
 
-<script>
-function handlebtSearchClick() {
-    var cbSong = document.getElementById("cbsong");
-    var cbArtist = document.getElementById("cbartist");
-    var cbAlbum = document.getElementById("cbalbum");
-    var searchText = document.getElementById("searchText");
-
-    if ((cbSong.checked || cbArtist.checked || cbAlbum.checked) && searchText.value) {
-        window.location.replace(
-            `http://localhost/AlbumApp/views/index.php?searchText=${searchText.value}&isSongSearch=${cbSong.checked}&isArtistSearch=${cbArtist.checked}&isAlbumSearch=${cbAlbum.checked}`
-        )
-    } else {
-        window.alert("Vui lòng điền đủ thông tin !!");
-    }
-
-}
-</script>
-<script>
-
-function playAudio(songID) {
-    var x = document.getElementById(`myAudio${songID}`);
-    x.play();
-    document.getElementById(`btPlayAudio${songID}`).innerHTML =`<button class="btn btn-outline-dark" onclick="pauseAudio(${songID})"><i class="fa fa-pause"></i></button>`
-
-}
-
-function pauseAudio(songID) {
-    var x = document.getElementById(`myAudio${songID}`);
-    x.pause();
-    document.getElementById(`btPlayAudio${songID}`).innerHTML =`<button class="btn btn-outline-dark" onclick="playAudio(${songID})"><i class="fa fa-play"></i></button>`
-
-}
-</script>
+<script src='../assets/js/handlebtSearchClick.js'></script>
+<script src='../assets/js/handlePlayAudio.js' ></script>
+<script src='../assets/js/handlePauseAudio.js' ></script>

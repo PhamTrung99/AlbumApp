@@ -20,34 +20,7 @@
     </form>
 </div>
 
-<script>
-function handleBtLogin() {
-    var userName = document.getElementById("userName").value;
-    var passWord = document.getElementById("passWord").value;
-
-    if (userName == "" || passWord == "") {
-        window.alert("Vui lòng điền đủ thông tin !!");
-    } else {
-        window.location.replace(
-            `http://localhost/AlbumApp/views/index.php?userName=${userName}&passWord=${passWord}`
-        )
-    }
-};
-
-function handleLoadWhenLogin() {
-    var userName = document.cookie;
-    if (userName != "") { 
-        document.getElementById("formLogin").innerHTML = `<div class="div" style="font-size:25px;">Chào ${userName} </div>
-    <button class="btn btn-outline-dark" onclick="handleLogOut()">Thoát</a>`
-    } else {
-      
-    }
-};
-
-function handleLogOut() {
-    document.cookie = "";
-    window.location.reload();
-}
-
-handleLoadWhenLogin();
-</script>
+<script src='../assets/js/handleBtLogin.js'></script>
+<script src='../assets/js/handleLoadWhenLogin.js'></script>
+<script src='../assets/js/handleLogOut.js'></script>
+<script>handleLoadWhenLogin();</script>
